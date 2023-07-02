@@ -1,0 +1,2 @@
+D:\Workspace\RuoYi-Vue\ruoyi-ui\ruoyi-ui\ruoyi-ui\obj\Debug\ruoyi-ui.esproj.SuggestedBindingRedirects.cache
+D:\Workspace\RuoYi-Vue\ruoyi-ui\ruoyi-ui\ruoyi-ui\obj\Debug\ruoyi-ui.esproj.CoreCompileInputs.cache
