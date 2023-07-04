@@ -1,7 +1,6 @@
 package com.ruoyi.web.controller.core;
 
 import com.ruoyi.common.core.controller.BaseController;
-import com.ruoyi.common.core.domain.AjaxResult;
 import com.ruoyi.common.core.page.TableDataInfo;
 import com.ruoyi.core.entity.vo.CustomListVO;
 import com.ruoyi.core.service.CustomService;
@@ -30,7 +29,7 @@ public class CustomController extends BaseController {
     @GetMapping("/getCustomList")
     public TableDataInfo getCustomList(Map map) {
         startPage();
-        List<CustomListVO> result = customService.getCustomList();
+        List<CustomListVO> result = customService.getCustomList(map);
         return getDataTable(result);
     }
 }

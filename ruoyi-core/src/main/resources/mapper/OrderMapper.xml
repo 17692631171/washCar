@@ -6,29 +6,22 @@
 
     <resultMap id="BaseResultMap" type="com.ruoyi.core.entity.Order">
             <id property="orderId" column="order_id" jdbcType="CHAR"/>
-            <result property="customId" column="custom_id" jdbcType="CHAR"/>
-            <result property="payType" column="pay_type" jdbcType="CHAR"/>
-            <result property="totalPrice" column="total_price" jdbcType="DECIMAL"/>
-            <result property="invoice" column="invoice" jdbcType="VARCHAR"/>
-            <result property="invoiceType" column="invoice_type" jdbcType="CHAR"/>
-            <result property="invoiceTitle" column="invoice_title" jdbcType="VARCHAR"/>
-            <result property="invoiceContent" column="invoice_content" jdbcType="VARCHAR"/>
-            <result property="companyName" column="company_name" jdbcType="VARCHAR"/>
-            <result property="orderState" column="order_state" jdbcType="CHAR"/>
+            <result property="payType" column="pay_type" jdbcType="TINYINT"/>
+            <result property="price" column="price" jdbcType="DECIMAL"/>
+            <result property="orderState" column="order_state" jdbcType="TINYINT"/>
             <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
             <result property="modifyTime" column="modify_time" jdbcType="TIMESTAMP"/>
             <result property="cancelTime" column="cancel_time" jdbcType="TIMESTAMP"/>
-            <result property="endTime" column="end_time" jdbcType="TIMESTAMP"/>
             <result property="payTime" column="pay_time" jdbcType="TIMESTAMP"/>
+            <result property="deleted" column="deleted" jdbcType="TINYINT"/>
             <result property="noteMessage" column="note_message" jdbcType="VARCHAR"/>
+            <result property="customId" column="custom_id" jdbcType="BIGINT"/>
     </resultMap>
 
     <sql id="Base_Column_List">
-        order_id,custom_id,
-        pay_type,total_price,invoice,
-        invoice_type,invoice_title,invoice_content,
-        company_name,order_state,create_time,
-        modify_time,cancel_time,end_time,
-        pay_time,note_message
+        order_id,pay_type,price,
+        order_state,create_time,modify_time,
+        cancel_time,pay_time,deleted,
+        note_message,custom_id
     </sql>
 </mapper>

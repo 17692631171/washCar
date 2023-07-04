@@ -5,13 +5,19 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.ruoyi.core.entity.vo.CustomListVO;
 
 import java.util.List;
+import java.util.Map;
 
 /**
-* @author Administrator
-* @description 针对表【t_custom(顾客基础表)】的数据库操作Service
-* @createDate 2023-07-01 17:19:09
+* @author 张玉
+* @description 针对表【t_custom(顾客信息表)】的数据库操作Service
+* @createDate 2023-07-04 10:28:46
 */
 public interface CustomService extends IService<Custom> {
-
-    List<CustomListVO> getCustomList();
+    /**
+     * 获取顾客信息列表
+     *
+     * @param map 请求参数
+     * @return 顾客信息列表
+     */
+    List<CustomListVO> getCustomList(Map map);
 }

@@ -7,9 +7,9 @@ import com.ruoyi.core.mapper.CarMapper;
 import org.springframework.stereotype.Service;
 
 /**
-* @author Administrator
-* @description 针对表【t_car】的数据库操作Service实现
-* @createDate 2023-07-01 17:18:38
+* @author 张玉
+* @description 针对表【t_car(车辆信息表)】的数据库操作Service实现
+* @createDate 2023-07-04 10:28:46
 */
 @Service
 public class CarServiceImpl extends ServiceImpl<CarMapper, Car>

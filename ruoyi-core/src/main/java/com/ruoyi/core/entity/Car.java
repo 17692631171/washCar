@@ -1,31 +1,32 @@
 package com.ruoyi.core.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 
 /**
- * 
+ * 车辆信息表
  * @TableName t_car
  */
+@TableName(value ="t_car")
 public class Car implements Serializable {
-    /**
-     * 车id
-     */
-    private String carId;
-
     /**
      * 车牌号
      */
-    private String carNumber;
+    @TableId
+    private String carId;
 
     /**
-     * 类型
+     * 车型
      */
-    private String type;
+    private Integer type;
 
     /**
      * 品牌
      */
-    private String brand;
+    private String branch;
 
     /**
      * 型号
@@ -38,66 +39,53 @@ public class Car implements Serializable {
     private String color;
 
     /**
-     * 用户id，用于外键
+     * 用户id
      */
-    private String customId;
+    private Long customId;
 
+    @TableField(exist = false)
     private static final long serialVersionUID = 1L;
 
     /**
-     * 车id
+     * 车牌号
      */
     public String getCarId() {
         return carId;
     }
 
     /**
-     * 车id
+     * 车牌号
      */
     public void setCarId(String carId) {
         this.carId = carId;
     }
 
     /**
-     * 车牌号
+     * 车型
      */
-    public String getCarNumber() {
-        return carNumber;
-    }
-
-    /**
-     * 车牌号
-     */
-    public void setCarNumber(String carNumber) {
-        this.carNumber = carNumber;
-    }
-
-    /**
-     * 类型
-     */
-    public String getType() {
+    public Integer getType() {
         return type;
     }
 
     /**
-     * 类型
+     * 车型
      */
-    public void setType(String type) {
+    public void setType(Integer type) {
         this.type = type;
     }
 
     /**
      * 品牌
      */
-    public String getBrand() {
-        return brand;
+    public String getBranch() {
+        return branch;
     }
 
     /**
      * 品牌
      */
-    public void setBrand(String brand) {
-        this.brand = brand;
+    public void setBranch(String branch) {
+        this.branch = branch;
     }
 
     /**
@@ -129,35 +117,16 @@ public class Car implements Serializable {
     }
 
     /**
-     * 用户id，用于外键
+     * 用户id
      */
-    public String getCustomId() {
+    public Long getCustomId() {
         return customId;
     }
 
     /**
-     * 用户id，用于外键
+     * 用户id
      */
-    public void setCustomId(String customId) {
+    public void setCustomId(Long customId) {
         this.customId = customId;
-    }
-
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", carId=").append(carId);
-        sb.append(", carNumber=").append(carNumber);
-        sb.append(", type=").append(type);
-        sb.append(", brand=").append(brand);
-        sb.append(", model=").append(model);
-        sb.append(", color=").append(color);
-        sb.append(", customId=").append(customId);
-        sb.append(", serialVersionUID=").append(serialVersionUID);
-        sb.append("]");
-        return sb.toString();
     }
 }

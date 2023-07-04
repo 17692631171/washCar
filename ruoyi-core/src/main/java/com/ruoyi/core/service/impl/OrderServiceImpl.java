@@ -7,12 +7,13 @@ import com.ruoyi.core.mapper.OrderMapper;
 import org.springframework.stereotype.Service;
 
 /**
-* @author Administrator
-* @description 针对表【t_order】的数据库操作Service实现
-* @createDate 2023-07-01 17:19:15
+* @author 张玉
+* @description 针对表【t_order(订单表)】的数据库操作Service实现
+* @createDate 2023-07-04 10:28:47
 */
 @Service
-public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements OrderService{
+public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order>
+    implements OrderService{
 
 }
 

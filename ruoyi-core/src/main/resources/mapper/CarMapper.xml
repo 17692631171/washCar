@@ -5,18 +5,16 @@
 <mapper namespace="com.ruoyi.core.mapper.CarMapper">
 
     <resultMap id="BaseResultMap" type="com.ruoyi.core.entity.Car">
-            <id property="carId" column="car_id" jdbcType="VARCHAR"/>
-            <result property="carNumber" column="car_number" jdbcType="CHAR"/>
-            <result property="type" column="type" jdbcType="CHAR"/>
-            <result property="brand" column="brand" jdbcType="VARCHAR"/>
-            <result property="model" column="model" jdbcType="VARCHAR"/>
+            <id property="carId" column="car_id" jdbcType="CHAR"/>
+            <result property="type" column="type" jdbcType="TINYINT"/>
+            <result property="branch" column="branch" jdbcType="CHAR"/>
+            <result property="model" column="model" jdbcType="CHAR"/>
             <result property="color" column="color" jdbcType="CHAR"/>
-            <result property="customId" column="custom_id" jdbcType="CHAR"/>
+            <result property="customId" column="custom_id" jdbcType="BIGINT"/>
     </resultMap>
 
     <sql id="Base_Column_List">
-        car_id,car_number,type,
-        brand,model,color,
-        custom_id
+        car_id,type,branch,
+        model,color,custom_id
     </sql>
 </mapper>
