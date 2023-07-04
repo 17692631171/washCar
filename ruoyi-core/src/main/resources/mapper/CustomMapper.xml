@@ -24,9 +24,17 @@
         remakes
     </sql>
     <select id="getCustomList" resultType="com.ruoyi.core.entity.vo.CustomListVO">
-        select tc.real_name, tw.sex, tc.car_id, tw.mobile, tc.status,
-        from washCar.t_custom tc
-                 left join washCar.t_wechat tw on tc.custom_id = tw.custom_id
-                 left join washCar.t_car tc2 on tc.custom_id = tc2.custom_id
+        SELECT
+            tc.real_name AS realName,
+            tw.sex AS sex,
+            tc.car_id AS carId,
+            tw.mobile AS mobile,
+            tc.status AS status,
+            ( SELECT sum( TO.price ) FROM t_order TO WHERE TO.custom_id = tc.custom_id ) AS consumptionTotal,
+            ( SELECT create_time FROM t_order TO WHERE tc.custom_id = TO.custom_id ) AS lastConsumptionDate
+        FROM
+            washCar.t_custom tc
+            LEFT JOIN washCar.t_wechat tw ON tc.custom_id = tw.custom_id
+            LEFT JOIN washCar.t_car tc2 ON tc.custom_id = tc2.custom_id
     </select>
 </mapper>
