@@ -1,33 +1,36 @@
 <template>
   <div class="app-container">
     <el-form :model="queryParams" ref="queryForm" size="small" :inline="true" v-show="showSearch">
-      <el-form-item label="姓名：" prop="realNameSearch">
-        <el-input v-model="queryParams.realNameSearch" placeholder="请输入姓名" clearable />
+      <el-form-item label="姓名：" prop="realName">
+        <el-input v-model="queryParams.realName" placeholder="请输入姓名" clearable />
       </el-form-item>
-      <el-form-item label="性别：" prop="sexSearch">
-        <el-select v-model="queryParams.sexSearch" filterable placeholder="请选择" clearable>
+      <el-form-item label="性别：" prop="sex">
+        <el-select v-model="queryParams.sex" filterable placeholder="请选择" clearable>
           <el-option v-for="dict in dict.type.custom_sex" :key="dict.value" :label="dict.label" :value="dict.value" />
         </el-select>
       </el-form-item>
-      <el-form-item label="车牌号：" prop="carNumberSearch">
-        <el-input v-model="queryParams.carNumberSearch" placeholder="请输入车牌号" clearable @keyup.enter.native="handleQuery" />
+      <el-form-item label="车牌号：" prop="carId">
+        <el-input v-model="queryParams.carId" placeholder="请输入车牌号" clearable @keyup.enter.native="handleQuery" />
       </el-form-item>
-      <el-form-item label="手机号：" prop="phoneSearch">
-        <el-input v-model="queryParams.phoneSearch" placeholder="请输入手机号" clearable @keyup.enter.native="handleQuery" />
+      <el-form-item label="手机号：" prop="mobile">
+        <el-input v-model="queryParams.mobile" placeholder="请输入手机号" clearable @keyup.enter.native="handleQuery" />
       </el-form-item>
-      <el-form-item label="状态：" prop="statusSearch">
+      <el-form-item label="手机号：" prop="mobile">
+        <el-input v-model="queryParams.mobile" placeholder="请输入手机号" clearable @keyup.enter.native="handleQuery" />
+      </el-form-item>
+      <el-form-item label="状态：" prop="status">
         <el-select v-model="queryParams.status" filterable placeholder="请选择" clearable>
           <el-option v-for="dict in dict.type.custom_status" :key="dict.value" :label="dict.label" :value="dict.value">
           </el-option>
         </el-select>
       </el-form-item>
-      <el-form-item label="上次消费时间：" prop="lastConsumptionDate">
-        <el-date-picker v-model="queryParams.lastConsumptionDateSearch" type="daterange" start-placeholder="开始日期"
+      <el-form-item label="上次消费时间：">
+        <el-date-picker v-model="lastConsumptionDate" type="daterange" start-placeholder="开始日期"
           end-placeholder="结束日期" :default-time="['00:00:00', '23:59:59']" :picker-options="pickerOptions">
         </el-date-picker>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" icon="el-icon-search" size="small" @click="handleQuery">搜索</el-button>
+        <el-button type="primary" icon="el-icon-" size="small" @click="handleQuery">搜索</el-button>
         <el-button icon="el-icon-refresh-right" size="small">重置</el-button>
       </el-form-item>
     </el-form>
@@ -59,10 +62,13 @@
           <dict-tag :options="dict.type.custom_sex" :value="scope.row.sex" />
         </template>
       </el-table-column>
-      <el-table-column align="center" key="weChatNumber" prop="weChatNumber" label="微信号" width="120" />
-      <el-table-column align="center" key="carNumber" prop="carNumber" label="车牌号" width="120" />
-      <el-table-column align="center" key="phone" prop="phone" label="手机号" width="120" />
+      <el-table-column align="center" key="signalNo" prop="signalNo" label="微信号" width="120" />
+      <el-table-column align="center" key="carId" prop="carId" label="车牌号" width="120" />
+      <el-table-column align="center" key="mobile" prop="mobile" label="手机号" width="120" />
       <el-table-column align="center" key="address" prop="address" label="地址" width="300" />
+      <el-table-column align="center" key="level" prop="level" label="会员等级" width="300" >
+
+      </el-table-column>
       <el-table-column align="center" key="status" prop="status" label="状态" width="120">
         <template slot-scope="scope">
           <el-tag :color="scope.row.status == '0' ? 'rgb(120, 184, 242)' :
@@ -110,14 +116,15 @@ export default {
       queryParams: {
         pageNum: 1,
         pageSize: 10,
-        realNameSearch: undefined,
-        sexSearch: undefined,
-        carNumberSearch: undefined,
-        phone: undefined,
-        statuSearch: undefined,
-        lastConsumptionDateSearch: undefined
+        realName: undefined,
+        sex: undefined,
+        carId: undefined,
+        mobile: undefined,
+        level: undefined,
+        status: undefined,
+        lastConsumptionDate: undefined
       },
-      sex: '',
+      lastConsumptionDate:[],
       pickerOptions: {
         shortcuts: [{
           text: '最近一周',
@@ -154,8 +161,7 @@ export default {
     //获取顾客列表信息
     getList() {
       //this.loading = true;
-      getCustomList(this.addDateRange(this.queryParams, this.dateRange)).then(response => {
-        console.log(response);
+      getCustomList(this.addDateRange(this.queryParams, this.lastConsumptionDate)).then(response => {
         this.customList = response.rows;
         this.total = response.total;
         this.loading = false;

@@ -26,7 +26,7 @@ public class Wechat implements Serializable {
     /**
      * 微信号
      */
-    private String signal;
+    private String signalNo;
 
     /**
      * 手机号
@@ -76,15 +76,15 @@ public class Wechat implements Serializable {
     /**
      * 微信号
      */
-    public String getSignal() {
-        return signal;
+    public String getSignalNo() {
+        return signalNo;
     }
 
     /**
      * 微信号
      */
-    public void setSignal(String signal) {
-        this.signal = signal;
+    public void setSignalNo(String signalNo) {
+        this.signalNo = signalNo;
     }
 
     /**
@@ -134,7 +134,7 @@ public class Wechat implements Serializable {
         return "Wechat{" +
                 "openId='" + openId + '\'' +
                 ", avatar='" + avatar + '\'' +
-                ", signal='" + signal + '\'' +
+                ", signalNo='" + signalNo + '\'' +
                 ", mobile='" + mobile + '\'' +
                 ", sex=" + sex +
                 ", customId=" + customId +

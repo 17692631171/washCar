@@ -25,16 +25,41 @@
     </sql>
     <select id="getCustomList" resultType="com.ruoyi.core.entity.vo.CustomListVO">
         SELECT
-            tc.real_name AS realName,
+            tc1.real_name AS realName,
             tw.sex AS sex,
-            tc.car_id AS carId,
+            tw.signal_no AS signalNo,
+            tc2.car_id AS carId,
             tw.mobile AS mobile,
-            tc.status AS status,
-            ( SELECT sum( TO.price ) FROM t_order TO WHERE TO.custom_id = tc.custom_id ) AS consumptionTotal,
-            ( SELECT create_time FROM t_order TO WHERE tc.custom_id = TO.custom_id ) AS lastConsumptionDate
+            tc1.status AS status,
+            tm.level AS level,
+            ( SELECT sum( to1.price ) FROM t_order to1 WHERE tc1.custom_id = to1.custom_id  ) AS consumptionTotal,
+            ( SELECT to1.create_time FROM t_order to1 WHERE tc1.custom_id = to1.custom_id ) AS lastConsumptionDate
         FROM
-            washCar.t_custom tc
-            LEFT JOIN washCar.t_wechat tw ON tc.custom_id = tw.custom_id
-            LEFT JOIN washCar.t_car tc2 ON tc.custom_id = tc2.custom_id
+            washCar.t_custom tc1
+            LEFT JOIN washCar.t_wechat tw ON tc1.custom_id = tw.custom_id
+            LEFT JOIN washCar.t_car tc2 ON tc1.custom_id = tc2.custom_id
+            LEFT JOIN washCar.t_order to1 ON tc1.custom_id = to1.custom_id
+            LEFT JOIN washCar.t_custom_member tcm ON tc1.custom_id = tcm.custom_id
+            LEFT JOIN washCar.t_member tm ON tcm.member_id = tm.member_id
+        <where>
+            <if test="realName != null and realName != ''">
+                and tc1.real_name = #{realName}
+            </if>
+            <if test="sex != null and sex != ''">
+                and tw.sex = #{sex}
+            </if>
+            <if test="carId != null and carId != ''">
+                and tc2.car_id = #{carId}
+            </if>
+            <if test="mobile != null and mobile != ''">
+                and tw.mobile = #{mobile}
+            </if>
+            <if test="status != null and status != ''">
+                and tc1.status = #{status}
+            </if>
+            <if test="consumptionTotal != null and consumptionTotal != ''">
+                and tc1.status = #{consumptionTotal}
+            </if>
+        </where>
     </select>
 </mapper>

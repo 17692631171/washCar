@@ -27,13 +27,13 @@ public class CustomServiceImpl extends ServiceImpl<CustomMapper, Custom>
     /**
      * 获取顾客信息列表
      *
-     * @param map 请求参数
+     * @param customListVO 请求参数
      * @return 顾客信息列表
      */
     @Override
-    public List<CustomListVO> getCustomList(Map map) {
-        customMapper.getCustomList(map);
-        return null;
+    public List<CustomListVO> getCustomList(CustomListVO customListVO) {
+        List<CustomListVO> result = customMapper.getCustomList(customListVO);
+        return result;
     }
 }
 

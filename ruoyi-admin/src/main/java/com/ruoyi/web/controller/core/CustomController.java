@@ -7,18 +7,18 @@ import com.ruoyi.core.service.CustomService;
 import com.ruoyi.web.controller.common.CommonController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author zhangYu
  */
 @RestController
-@RequestMapping("/custom")
+@RequestMapping("/core/custom")
 public class CustomController extends BaseController {
     private static final Logger log = LoggerFactory.getLogger(CommonController.class);
 
@@ -26,10 +26,11 @@ public class CustomController extends BaseController {
     public CustomController(CustomService customService){
         this.customService = customService;
     }
-    @GetMapping("/getCustomList")
-    public TableDataInfo getCustomList(Map map) {
+    @PreAuthorize("@ss.hasPermi('core:custom:list')")
+    @GetMapping("/list")
+    public TableDataInfo getCustomList(CustomListVO customListVO) {
         startPage();
-        List<CustomListVO> result = customService.getCustomList(map);
+        List<CustomListVO> result = customService.getCustomList(customListVO);
         return getDataTable(result);
     }
 }

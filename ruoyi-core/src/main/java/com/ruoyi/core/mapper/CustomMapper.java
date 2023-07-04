@@ -2,9 +2,10 @@ package com.ruoyi.core.mapper;
 
 import com.ruoyi.core.entity.Custom;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.ruoyi.core.entity.vo.CustomListVO;
 import org.apache.ibatis.annotations.Mapper;
 
-import java.util.Map;
+import java.util.List;
 
 /**
 * @author 张玉
@@ -15,7 +16,7 @@ import java.util.Map;
 @Mapper
 public interface CustomMapper extends BaseMapper<Custom> {
 
-    void getCustomList(Map map);
+    List<CustomListVO> getCustomList(CustomListVO customListVO);
 }
 
 

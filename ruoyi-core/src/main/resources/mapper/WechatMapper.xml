@@ -7,14 +7,14 @@
     <resultMap id="BaseResultMap" type="com.ruoyi.core.entity.Wechat">
             <id property="openId" column="open_id" jdbcType="CHAR"/>
             <result property="avatar" column="avatar" jdbcType="VARCHAR"/>
-            <result property="signal" column="signal" jdbcType="VARCHAR"/>
+            <result property="signalNo" column="signal_no" jdbcType="VARCHAR"/>
             <result property="mobile" column="mobile" jdbcType="CHAR"/>
             <result property="sex" column="sex" jdbcType="TINYINT"/>
             <result property="customId" column="custom_id" jdbcType="BIGINT"/>
     </resultMap>
 
     <sql id="Base_Column_List">
-        open_id,avatar,signal,
-        mobile,custom_id
+        open_id,avatar,signalNo,
+        mobile,sex,custom_id
     </sql>
 </mapper>

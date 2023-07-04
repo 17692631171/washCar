@@ -1,10 +1,10 @@
 import request from '@/utils/request'
 
 // 查询顾客信息
-export function getCustomList(query) {
+export function getCustomList(queryParams) {
   return request({
-    url: '/custom/getCustomList',
+    url: '/core/custom/list',
     method: 'get',
-    params: query
+    params: queryParams
   })
 }

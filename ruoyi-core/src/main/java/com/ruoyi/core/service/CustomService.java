@@ -16,8 +16,8 @@ public interface CustomService extends IService<Custom> {
     /**
      * 获取顾客信息列表
      *
-     * @param map 请求参数
+     * @param customListVO 请求参数
      * @return 顾客信息列表
      */
-    List<CustomListVO> getCustomList(Map map);
+    List<CustomListVO> getCustomList(CustomListVO customListVO);
 }

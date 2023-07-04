@@ -16,19 +16,19 @@ public class CustomListVO {
     /**
      * 性别
      */
-    private String sex;
+    private Integer sex;
     /**
      * 微信号
      */
-    private String weChatNumber;
+    private String signalNo;
     /**
      * 车牌号
      */
-    private String carNumber;
+    private String carId;
     /**
      * 手机号
      */
-    private String phone;
+    private String mobile;
     /**
      * 地址
      */
@@ -36,7 +36,11 @@ public class CustomListVO {
     /**
      * 状态
      */
-    private String status;
+    private Integer status;
+    /**
+     * 会员卡等级
+     */
+    private Integer level;
     /**
      * 累计消费
      */
@@ -54,36 +58,36 @@ public class CustomListVO {
         this.realName = realName;
     }
 
-    public String getSex() {
+    public Integer getSex() {
         return sex;
     }
 
-    public void setSex(String sex) {
+    public void setSex(Integer sex) {
         this.sex = sex;
     }
 
-    public String getWeChatNumber() {
-        return weChatNumber;
+    public String getSignalNo() {
+        return signalNo;
     }
 
-    public void setWeChatNumber(String weChatNumber) {
-        this.weChatNumber = weChatNumber;
+    public void setSignalNo(String signalNo) {
+        this.signalNo = signalNo;
     }
 
-    public String getCarNumber() {
-        return carNumber;
+    public String getCarId() {
+        return carId;
     }
 
-    public void setCarNumber(String carNumber) {
-        this.carNumber = carNumber;
+    public void setCarId(String carId) {
+        this.carId = carId;
     }
 
-    public String getPhone() {
-        return phone;
+    public String getMobile() {
+        return mobile;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
     }
 
     public String getAddress() {
@@ -94,12 +98,20 @@ public class CustomListVO {
         this.address = address;
     }
 
-    public String getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public Integer getLevel() {
+        return level;
+    }
+
+    public void setLevel(Integer level) {
+        this.level = level;
     }
 
     public BigDecimal getConsumptionTotal() {
@@ -122,12 +134,13 @@ public class CustomListVO {
     public String toString() {
         return "CustomListVO{" +
                 "realName='" + realName + '\'' +
-                ", sex='" + sex + '\'' +
-                ", weChatNumber='" + weChatNumber + '\'' +
-                ", carNumber='" + carNumber + '\'' +
-                ", phone='" + phone + '\'' +
+                ", sex=" + sex +
+                ", signalNo='" + signalNo + '\'' +
+                ", carId='" + carId + '\'' +
+                ", mobile='" + mobile + '\'' +
                 ", address='" + address + '\'' +
-                ", status='" + status + '\'' +
+                ", status=" + status +
+                ", level=" + level +
                 ", consumptionTotal=" + consumptionTotal +
                 ", lastConsumptionDate=" + lastConsumptionDate +
                 '}';
