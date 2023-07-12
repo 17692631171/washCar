@@ -181,7 +181,7 @@ public class ExcelUtil<T>
     /**
      * 统计列表
      */
-    private Map<Integer, Double> statistics = new HashMap<Integer, Double>();
+    private final Map<Integer, Double> statistics = new HashMap<Integer, Double>();
 
     /**
      * 数字格式
@@ -698,7 +698,7 @@ public class ExcelUtil<T>
             rowNo = isSubList() ? (i > 1 ? rowNo + 1 : rowNo + i) : i + 1 + rownum - startNo;
             row = sheet.createRow(rowNo);
             // 得到导出对象.
-            T vo = (T) list.get(i);
+            T vo = list.get(i);
             Collection<?> subList = null;
             if (isSubList())
             {
@@ -1270,7 +1270,7 @@ public class ExcelUtil<T>
         try
         {
             Object instance = excel.handler().newInstance();
-            Method formatMethod = excel.handler().getMethod("format", new Class[] { Object.class, String[].class });
+            Method formatMethod = excel.handler().getMethod("format", Object.class, String[].class);
             value = formatMethod.invoke(instance, value, excel.args());
         }
         catch (Exception e)
@@ -1710,7 +1710,7 @@ public class ExcelUtil<T>
         Object value;
         try
         {
-            value = subMethod.invoke(obj, new Object[] {});
+            value = subMethod.invoke(obj);
         }
         catch (Exception e)
         {
@@ -1734,7 +1734,7 @@ public class ExcelUtil<T>
         Method method = null;
         try
         {
-            method = pojoClass.getMethod(getMethodName.toString(), new Class[] {});
+            method = pojoClass.getMethod(getMethodName.toString());
         }
         catch (Exception e)
         {

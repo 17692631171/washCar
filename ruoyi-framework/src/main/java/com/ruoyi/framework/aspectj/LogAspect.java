@@ -184,7 +184,7 @@ public class LogAspect
     private String argsArrayToString(Object[] paramsArray, String[] excludeParamNames)
     {
         String params = "";
-        if (paramsArray != null && paramsArray.length > 0)
+        if (paramsArray != null)
         {
             for (Object o : paramsArray)
             {
@@ -193,7 +193,7 @@ public class LogAspect
                     try
                     {
                         String jsonObj = JSON.toJSONString(o, excludePropertyPreFilter(excludeParamNames));
-                        params += jsonObj.toString() + " ";
+                        params += jsonObj + " ";
                     }
                     catch (Exception e)
                     {
