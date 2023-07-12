@@ -2,36 +2,33 @@
   <div class="app-container">
     <el-form :model="queryParams" ref="queryForm" size="small" :inline="true" v-show="showSearch">
       <el-form-item label="姓名：" prop="realName">
-        <el-input v-model="queryParams.realName" placeholder="请输入姓名" clearable />
+        <el-input v-model="queryParams.realName" placeholder="请输入姓名" id="realName" clearable />
       </el-form-item>
       <el-form-item label="性别：" prop="sex">
-        <el-select v-model="queryParams.sex" filterable placeholder="请选择" clearable>
+        <el-select v-model="queryParams.sex" filterable placeholder="请选择" id="sex" clearable>
           <el-option v-for="dict in dict.type.custom_sex" :key="dict.value" :label="dict.label" :value="dict.value" />
         </el-select>
       </el-form-item>
       <el-form-item label="车牌号：" prop="carId">
-        <el-input v-model="queryParams.carId" placeholder="请输入车牌号" clearable @keyup.enter.native="handleQuery" />
+        <el-input v-model="queryParams.carId" placeholder="请输入车牌号" id="carId" clearable @keyup.enter.native="handleQuery" />
       </el-form-item>
       <el-form-item label="手机号：" prop="mobile">
-        <el-input v-model="queryParams.mobile" placeholder="请输入手机号" clearable @keyup.enter.native="handleQuery" />
-      </el-form-item>
-      <el-form-item label="手机号：" prop="mobile">
-        <el-input v-model="queryParams.mobile" placeholder="请输入手机号" clearable @keyup.enter.native="handleQuery" />
+        <el-input v-model="queryParams.mobile" placeholder="请输入手机号" id="mobile" clearable @keyup.enter.native="handleQuery" />
       </el-form-item>
       <el-form-item label="状态：" prop="status">
-        <el-select v-model="queryParams.status" filterable placeholder="请选择" clearable>
-          <el-option v-for="dict in dict.type.custom_status" :key="dict.value" :label="dict.label" :value="dict.value">
+        <el-select v-model="queryParams.status" filterable placeholder="请选择" id="status" clearable>
+          <el-option v-for="dict in dict.type.custom_status" :key="dict.value" :label="dict.label" :value="dict.value" >
           </el-option>
         </el-select>
       </el-form-item>
-      <el-form-item label="上次消费时间：">
+      <el-form-item label="上次消费时间：" prop="lastConsumptionDate">
         <el-date-picker v-model="lastConsumptionDate" type="daterange" start-placeholder="开始日期"
-          end-placeholder="结束日期" :default-time="['00:00:00', '23:59:59']" :picker-options="pickerOptions">
+          end-placeholder="结束日期" :default-time="['00:00:00', '23:59:59']" :picker-options="pickerOptions" id="lastConsumptionDate">
         </el-date-picker>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" icon="el-icon-" size="small" @click="handleQuery">搜索</el-button>
-        <el-button icon="el-icon-refresh-right" size="small">重置</el-button>
+        <el-button icon="el-icon-refresh-right" size="small" @click="resetQuery">重置</el-button>
       </el-form-item>
     </el-form>
     <el-row :gutter="10" class="mb8">
@@ -109,7 +106,12 @@ export default {
       loading: false,
       //顾客列表信息
       customList: [],
+      //是否显示搜索栏
       showSearch: true,
+      // 非单个禁用
+      single: true,
+      // 非多个禁用
+      multiple: true,
       //顾客列表数量
       total: 0,
       //顾客列表页数
@@ -118,11 +120,13 @@ export default {
         pageSize: 10,
         realName: undefined,
         sex: undefined,
+        signalNo: undefined,
+        address: undefined,
         carId: undefined,
         mobile: undefined,
         level: undefined,
         status: undefined,
-        lastConsumptionDate: undefined
+        lastConsumptionDate: []
       },
       lastConsumptionDate:[],
       pickerOptions: {
@@ -155,8 +159,22 @@ export default {
     }
   },
   methods: {
+
     handleClick(row) {
       console.log(row)
+    },
+    //新增顾客信息
+    handleAdd(){
+
+    },
+    handleUpdate(){
+
+    },
+    handleDelete(){
+
+    },
+    handleExport(){
+
     },
     //获取顾客列表信息
     getList() {
@@ -187,6 +205,11 @@ export default {
     handleQuery(){
       this.queryParams.pageNum = 1;
       this.getList();
+    },
+    //重置按钮
+    resetQuery(){
+      this.lastConsumptionDate = [];
+      this.resetForm("queryParams");
     }
   },
 

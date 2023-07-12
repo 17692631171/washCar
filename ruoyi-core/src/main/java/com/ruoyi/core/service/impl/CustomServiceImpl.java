@@ -8,7 +8,6 @@ import com.ruoyi.core.mapper.CustomMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Map;
 
 /**
 * @author 张玉
@@ -32,7 +31,9 @@ public class CustomServiceImpl extends ServiceImpl<CustomMapper, Custom>
      */
     @Override
     public List<CustomListVO> getCustomList(CustomListVO customListVO) {
+        System.out.println("customListVO:"+customListVO);
         List<CustomListVO> result = customMapper.getCustomList(customListVO);
+        System.out.println("reuslt:"+result);
         return result;
     }
 }

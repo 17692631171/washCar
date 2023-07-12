@@ -17,8 +17,7 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-        custom_id
-        ,real_name,nick_name,
+        custom_id,real_name,nick_name,
         address,reg_type,job,
         reg_time,update_time,status,
         remakes
